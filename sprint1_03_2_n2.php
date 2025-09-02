@@ -28,11 +28,33 @@
 
     function printStudentAverage($arrayAverages) {
         foreach ($arrayAverages as $student => $average){
-            echo($student . ":" . number_format($average, 2) . "\n");
+            echo($student . ":" . $average . "\n");
         }
+    }
+
+    function classroomAverage($arrayGrades) {
+        $totalAmount = 0;
+        $totalCount = 0;
+
+        foreach ($arrayGrades as $grades) {
+            $totalAmount += array_sum($grades);
+            $totalCount += count($grades);
+        }
+
+        return $totalAmount / $totalCount;
+    }
+
+    function printClassroomAverage($globalAverage) {
+        echo "media global de la clase: " . $globalAverage;
     }
    
     $studentAverageGrades = studentAverageGrade($grades);
     printStudentAverage($studentAverageGrades);
+
+    $globalAverage = classroomAverage($grades);
+    printClassroomAverage($globalAverage);
+    
+
+
 
 ?>
